@@ -26,7 +26,7 @@ function GerarTextoDoConsorcio({searchParams}: DocumentoPageProps){
       return (
         <>
           <p>2.5.1 No caso vertente, é permitida a participação de empresas sob a forma de consórcio, na forma do art. 15, da Lei nº 14.133/2021.</p>
-          <p>O número máximo de empresas admitidas em cada consórcio será de <strong>{numStr} ({extensoStr})</strong>, uma vez que {justStr}.</p>
+          <p>O número máximo de empresas admitidas em cada consórcio será de <strong>{numStr} ({extensoStr})</strong>, uma vez que <strong>{justStr}</strong>.</p>
         </>
       );
 

@@ -38,7 +38,7 @@ import { ConteudoDocumento } from '../components/ConteudoDocumento';
               <option value="sim_com_numero_limitado_de_fornecedores">Sim, com número limitado de fornecedores</option>
               <option value="nao">Não</option>
             </select>
-            <button onClick={handleVisualizar} className='cursor-pointer ml-2 p-2 hover:text-blue-500'><IoEyeSharp size={20}/></button>
+            <button type="button" aria-label='Visualizar PDF' onClick={handleVisualizar} className='cursor-pointer ml-2 p-2 hover:text-blue-500'><IoEyeSharp size={20}/></button>
           </div>
         </div>
         {formData.descricao === 'sim_com_numero_limitado_de_fornecedores' && (
