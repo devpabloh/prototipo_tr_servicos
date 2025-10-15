@@ -6,11 +6,13 @@ interface ConteudoDocumentoProps {
     descricao?: string;
     numeroConsorciadas?: string;
     justificativa?: string;
+    nao_havendo_complexidade_objeto?: string; 
+    nao_havendo_grande_vulto_da_contratacao?: string; 
   }
 }
 
 function GerarTextoDoConsorcio({ formData }: ConteudoDocumentoProps) {
-  const { descricao, numeroConsorciadas, justificativa } = formData;
+  const { descricao, numeroConsorciadas, justificativa, nao_havendo_complexidade_objeto,nao_havendo_grande_vulto_da_contratacao } = formData;
 
   const extensoStr = numeroPorExtenso(numeroConsorciadas || ''); 
 
@@ -33,7 +35,7 @@ function GerarTextoDoConsorcio({ formData }: ConteudoDocumentoProps) {
         <>
           <p>2.5.1. De acordo com o art. 15 da Lei nº 14.133/2021, a participação de empresas reunidas em consórcio poderá ser vedada, segundo discricionariedade da Administração, com base em justificativa técnica que leve em consideração as peculiaridades do caso concreto.</p>
           <p>2.5.2 Assim, não poderá participar desta licitação consórcio de empresa, qualquer que seja sua forma de constituição, visto que não se faz necessária a conjugação de esforços para a prestação do presenteserviço contínuo.</p>
-          <p>2.5.3. Além disso, no caso vertente, não se faz presente a premissa da complexidade do objeto, uma vez que _____________________________________________________. Também não está presente o grande vulto da contratação, pois _________________________________________.</p>
+          <p>2.5.3. Além disso, no caso vertente, não se faz presente a premissa da complexidade do objeto, uma vez que <strong>{nao_havendo_complexidade_objeto}</strong>. Também não está presente o grande vulto da contratação, pois <strong>{nao_havendo_grande_vulto_da_contratacao}</strong>.</p>
         </>
       );
 

@@ -1,6 +1,5 @@
-// app/components/Modal.tsx
 
-'use client'; // Este componente precisa de interatividade (clicks)
+'use client';
 
 import React from 'react';
 import { IoClose } from "react-icons/io5";
@@ -25,12 +24,11 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
         onClick={(e) => e.stopPropagation()}
         className="relative bg-transparent w-full max-w-4xl" 
       >
-
         <button 
           onClick={onClose}
-          className="absolute -top-10 right-0 text-white hover:text-gray-300"
+          className="absolute -top-10 right-0 text-red-600 hover:text-red-300"
         >
-          <IoClose size={30} />
+          <IoClose size={40} />
         </button>
         
         {children}

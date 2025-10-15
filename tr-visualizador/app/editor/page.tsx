@@ -1,6 +1,5 @@
 'use client'
 import {useState} from 'react'
-import { useRouter } from 'next/navigation'
 import { IoEyeSharp } from "react-icons/io5";
 import { numeroPorExtenso } from '@/lib/utils'; 
 import { Modal } from '../components/Modal';
@@ -11,6 +10,8 @@ import { ConteudoDocumento } from '../components/ConteudoDocumento';
     descricao: 'sim',
     numeroConsorciadas: '',
     justificativa: '',
+    nao_havendo_complexidade_objeto: '',
+    nao_havendo_grande_vulto_da_contratacao: ''
     
   })
 
@@ -37,12 +38,12 @@ import { ConteudoDocumento } from '../components/ConteudoDocumento';
               <option value="sim_com_numero_limitado_de_fornecedores">Sim, com número limitado de fornecedores</option>
               <option value="nao">Não</option>
             </select>
-            <button onClick={handleVisualizar} className='cursor-pointer ml-2 p-2'><IoEyeSharp size={20}/></button>
+            <button onClick={handleVisualizar} className='cursor-pointer ml-2 p-2 hover:text-blue-500'><IoEyeSharp size={20}/></button>
           </div>
         </div>
         {formData.descricao === 'sim_com_numero_limitado_de_fornecedores' && (
           <div className='flex flex-col space-y-1'>
-            <label htmlFor="quantas_empresas_serao_admitidas_consorcio" className="font-semibold">Quantas empresas serão admitidas em cada consórcio</label>
+            <label htmlFor="quantas_empresas_serao_admitidas_consorcio" className="font-semibold">Quantas empresas serão admitidas em cada consórcio ?</label>
             <input type="number" id='quantas_empresas_serao_admitidas_consorcio' className='border rounded-sm p-2 w-[345px]' value={formData.numeroConsorciadas} onChange={(e)=>setFormData({...formData, numeroConsorciadas: e.target.value})} />
              {formData.descricao === 'sim_com_numero_limitado_de_fornecedores' && (
               <p className="text-sm text-gray-500 italic">
@@ -60,6 +61,29 @@ import { ConteudoDocumento } from '../components/ConteudoDocumento';
             <input type="text" id='justificativa' className='border rounded-sm p-2' value={formData.justificativa} onChange={(e)=>setFormData({...formData, justificativa: e.target.value})} />
           </div>
         ) }
+        {formData.descricao === 'nao' && (
+          <div className='flex flex-col space-y-1'>
+            <label htmlFor="nao_havendo_complexidade_objeto" className='font-semibold'>Além disso, no caso vertente, não se faz presente a premissa de complexidade do objeto, uma vez que?</label>
+            <div>
+              <span className="orientacoes">Adaptar a redação caso haja apenas um dos critérios – vulto ou complexidade</span>
+            </div>
+            <div>
+              <input type="text" id='nao_havendo_complexidade_objeto' className='border rounded-sm p-2 w-full' value={formData.nao_havendo_complexidade_objeto} onChange={(e)=>setFormData({...formData, nao_havendo_complexidade_objeto: e.target.value})} />
+            </div>
+          </div>
+        )}
+        {formData.descricao === 'nao' && (
+          <div className='flex flex-col space-y-1'>
+            <label htmlFor="nao_havendo_grande_vulto_da_contratacao" className='font-semibold'>Também não está presente o grande vulto da contratação, pois?</label>
+            <div>
+              <input type="text" id='nao_havendo_grande_vulto_da_contratacao' className='border rounded-sm p-2 w-full' value={formData.nao_havendo_grande_vulto_da_contratacao} onChange={(e)=>setFormData({...formData, nao_havendo_grande_vulto_da_contratacao: e.target.value})} />
+            </div>
+            <div>
+              <span className="orientacoes">Caso haja outra justificativa cabível, acrescentar, como exemplo: baixa complexidade técnica ou operacional ou ausência de riscos financeiros consideráveis</span>
+            </div>
+          </div>
+        )}
+
       </div>
     </fieldset>
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
